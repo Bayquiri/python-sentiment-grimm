@@ -142,9 +142,36 @@ def erklaere_01_aufgabe_4():
 
 
 # ============================================================
-# Kapitel 02: Strings und Booleans (TODO)
+# Kapitel 02: Strings und Booleans
 # ============================================================
 
+def pruefe_02_aufgabe_1():
+    """Aufgabe 1: Erklärung der verschiedenen Slicing-Formen."""
+    print("  ℹ️ Hier die Auflösung:")
+    print()
+    print("     title[low:]   → Beginnt beim Index 'low' und gibt den Rest aus.")
+    print("     title[:high]  → Beginnt am Anfang und endet vor dem Index 'high'.")
+    print("     title[:]      → Gibt die gesamte Zeichenkette aus (eine Kopie).")
+    print("     title[n:-m]   → Beginnt bei Index n und endet m Zeichen vor dem Ende.")
+    print()
+    print("     Negative Indizes zählen vom Ende: -1 ist das letzte Zeichen,")
+    print("     -2 das vorletzte, usw.")
+
+def erklaere_02_slice_zahlen():
+    """Erklärt, warum Slicing bei Zahlen nicht funktioniert."""
+    print("  ℹ️ Auflösung:")
+    print()
+    print('     a = 123')
+    print('     print(a[1])  → TypeError!')
+    print()
+    print("     Zahlen werden nicht als Zeichenketten gespeichert.")
+    print("     Daher kann man auf einzelne Ziffern nicht per Index zugreifen.")
+    print()
+    print('     Aber: a = "123" macht aus der Zahl dank der Anführungszeichen einen String.')
+    print('     print(a[1])  → 2')
+    print()
+    print("     Als String funktioniert Slicing — aber rechnen kann man")
+    print("     mit dem String dann nicht mehr.")
 
 # ============================================================
 # Kapitel 03: Listen (TODO)
