@@ -174,9 +174,102 @@ def erklaere_02_slice_zahlen():
     print("     mit dem String dann nicht mehr.")
 
 # ============================================================
-# Kapitel 03: Listen (TODO)
+# Kapitel 03: Listen
 # ============================================================
 
+def pruefe_03_aufgabe_1():
+    """Prüft Aufgabe 1: Liste figuren erstellen, Länge und erstes Element."""
+    v = _hole_variablen()
+    fehler = 0
+
+    if "figuren" not in v:
+        print("  ❌ Variable 'figuren' nicht gefunden. Haben Sie die Liste erstellt?")
+        return
+
+    figuren = v["figuren"]
+
+    if not isinstance(figuren, list):
+        print("  ❌ 'figuren' sollte eine Liste sein. Nutzen Sie eckige Klammern: [...]")
+        return
+
+    if len(figuren) != 3:
+        print(f"  ❌ Die Liste sollte 3 Einträge haben, hat aber {len(figuren)}.")
+        fehler += 1
+
+    erwartet = ['Stiefmutter', 'Prinz', 'Ritter']
+    for i, name in enumerate(erwartet):
+        if i < len(figuren) and figuren[i] != name:
+            print(f"  ❌ Element {i} sollte nicht '{figuren[i]}' sein. Prüfen Sie die Schreibweise.")
+            fehler += 1
+
+    if fehler == 0:
+        print("  ✅ Richtig! Die Liste 'figuren' ist korrekt erstellt.")
+
+
+def pruefe_03_aufgabe_2():
+    """Prüft Aufgabe 2: Zahlenliste und Slicing."""
+    v = _hole_variablen()
+
+    if "numbers" not in v:
+        print("  ❌ Variable 'numbers' nicht gefunden. Haben Sie die Liste erstellt?")
+        return
+
+    numbers = v["numbers"]
+
+    if not isinstance(numbers, list):
+        print("  ❌ 'numbers' sollte eine Liste sein.")
+        return
+
+    if numbers == [1, 2, 3, 4, 5, 6]:
+        print("  ✅ Die Liste 'numbers' ist korrekt.")
+        print("  ℹ️ Haben Sie die ersten und letzten drei Elemente per Slicing ausgegeben?")
+        print("     Die ersten drei: numbers[0:3] oder numbers[:3]")
+        print("     Die letzten drei: numbers[3:6] oder numbers[3:]")
+    elif len(numbers) != 6:
+        print(f"  ❌ Die Liste sollte 6 Elemente haben, hat aber {len(numbers)}.")
+    else:
+        print("  ❌ Die Werte in der Liste stimmen nicht. Erwartet: [1, 2, 3, 4, 5, 6]")
+
+
+def pruefe_03_aufgabe_3():
+    """Prüft Aufgabe 3: Lücken ausfüllen mit append und slice."""
+    v = _hole_variablen()
+
+    if "values" not in v:
+        print("  ❌ Variable 'values' nicht gefunden. Haben Sie die Zelle ausgeführt?")
+        return
+
+    values = v["values"]
+
+    if not isinstance(values, list):
+        print("  ❌ 'values' sollte eine Liste sein.")
+        return
+
+    if values == [3, 5]:
+        print("  ✅ Richtig! Die Lücken wurden korrekt ausgefüllt.")
+    elif values == [1, 3, 5]:
+        print("  ❌ Fast! Die erste Ausgabe stimmt, aber das Slicing am Ende fehlt noch.")
+        print("     Tipp: Welches Slice ergibt [3, 5] aus [1, 3, 5]?")
+    elif values == []:
+        print("  ❌ Die Liste ist leer. Haben Sie die Lücken ____ schon ersetzt?")
+    else:
+        print(f"  ❌ Die Liste enthält: {values}")
+        print("     Erwartet wird am Ende: [3, 5]")
+        print("     Tipp: Nutzen Sie .append() zum Hinzufügen und [start:stop] zum Slicen.")
+
+
+def erklaere_03_aufgabe_4():
+    """Aufgabe 4: Erklärung negativer Indexwerte."""
+    print("  ℹ️ Auflösung:")
+    print()
+    print("     Ein negativer Index zählt vom Ende der Liste:")
+    print("     -1 ist das letzte Element, -2 das vorletzte, usw.")
+    print()
+    print("     resources[-1] gibt also 'Wörterbücher' aus,")
+    print("     weil das der letzte Eintrag in der Liste ist.")
+    print()
+    print("     del resources[-1] würde das letzte Element entfernen.")
+    print("     Die Liste wäre danach: ['Märchen', 'Sagen', 'wissenschaftliche Arbeiten']")
 
 # ============================================================
 # Kapitel 04: Texte einlesen und bereinigen (TODO)
