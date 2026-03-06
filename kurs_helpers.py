@@ -272,17 +272,188 @@ def erklaere_03_aufgabe_4():
     print("     Die Liste wäre danach: ['Märchen', 'Sagen', 'wissenschaftliche Arbeiten']")
 
 # ============================================================
-# Kapitel 04: Texte einlesen und bereinigen (TODO)
+# Kapitel 04: Texte einlesen und bereinigen
 # ============================================================
 
-# Hier kommen später:
-# - lade_maerchen(dateiname) — lädt und bereinigt ein Märchen
-# - pruefe_04_aufgabe_X() — Prüffunktionen für Kapitel 04
+def pruefe_04_aufgabe_1():
+    """Prüft die Übung: Text einlesen, bereinigen und Wörter zählen."""
+    from collections import Counter
+    v = _hole_variablen()
+    schritt = 0
+
+    # Schritt 1: Text eingelesen?
+    if "uebung_text" not in v:
+        print("  ❌ Schritt 1: Variable 'uebung_text' nicht gefunden.")
+        print("     Haben Sie den Text mit open() eingelesen und in 'uebung_text' gespeichert?")
+        return
+
+    if not isinstance(v["uebung_text"], str):
+        print("  ❌ Schritt 1: 'uebung_text' sollte ein String sein.")
+        return
+
+    if len(v["uebung_text"]) < 100:
+        print("  ❌ Schritt 1: 'uebung_text' scheint zu kurz. Wurde die richtige Datei eingelesen?")
+        return
+
+    print("  ✅ Schritt 1: Text erfolgreich eingelesen.")
+    schritt += 1
+
+    # Schritt 2: Kleingeschrieben?
+    if "uebung_klein" not in v:
+        print("  ❌ Schritt 2: Variable 'uebung_klein' nicht gefunden.")
+        print("     Haben Sie den Text mit .lower() kleingeschrieben und in 'uebung_klein' gespeichert?")
+        return
+
+    if v["uebung_klein"] != v["uebung_text"].lower():
+        if v["uebung_klein"] == v["uebung_text"]:
+            print("  ❌ Schritt 2: Der Text ist noch nicht kleingeschrieben. Nutzen Sie .lower()")
+        else:
+            print("  ❌ Schritt 2: 'uebung_klein' hat nicht den erwarteten Inhalt.")
+        return
+
+    print("  ✅ Schritt 2: Text erfolgreich kleingeschrieben.")
+    schritt += 1
+
+    # Schritt 3: Satzzeichen entfernt?
+    if "uebung_bereinigt" not in v:
+        print("  ❌ Schritt 3: Variable 'uebung_bereinigt' nicht gefunden.")
+        print("     Haben Sie die Satzzeichen entfernt und das Ergebnis in 'uebung_bereinigt' gespeichert?")
+        return
+
+    bereinigt = v["uebung_bereinigt"]
+    fehlende = []
+    for zeichen in [".", ",", "'", "?"]:
+        if zeichen in bereinigt:
+            fehlende.append(zeichen)
+
+    if fehlende:
+        print(f"  ❌ Schritt 3: Folgende Satzzeichen sind noch im Text: {fehlende}")
+        print("     Nutzen Sie .replace() für jedes Satzzeichen.")
+        return
+
+    print("  ✅ Schritt 3: Satzzeichen erfolgreich entfernt.")
+    schritt += 1
+
+    # Schritt 4: In Wörter zerlegt?
+    if "uebung_woerter" not in v:
+        print("  ❌ Schritt 4: Variable 'uebung_woerter' nicht gefunden.")
+        print("     Haben Sie den Text mit .split() in Wörter zerlegt und in 'uebung_woerter' gespeichert?")
+        return
+
+    if not isinstance(v["uebung_woerter"], list):
+        print("  ❌ Schritt 4: 'uebung_woerter' sollte eine Liste sein. Nutzen Sie .split()")
+        return
+
+    if len(v["uebung_woerter"]) < 50:
+        print("  ❌ Schritt 4: Die Wortliste scheint zu kurz. Wurde .split() auf den bereinigten Text angewendet?")
+        return
+
+    print("  ✅ Schritt 4: Text erfolgreich in Wörter zerlegt.")
+    schritt += 1
+
+    # Schritt 5: Wörter gezählt?
+    if "uebung_haeufigkeiten" not in v:
+        print("  ❌ Schritt 5: Variable 'uebung_haeufigkeiten' nicht gefunden.")
+        print("     Haben Sie Counter() auf die Wortliste angewendet und in 'uebung_haeufigkeiten' gespeichert?")
+        return
+
+    if not isinstance(v["uebung_haeufigkeiten"], Counter):
+        print("  ❌ Schritt 5: 'uebung_haeufigkeiten' sollte ein Counter-Objekt sein.")
+        print("     Nutzen Sie: uebung_haeufigkeiten = Counter(uebung_woerter)")
+        return
+
+    print("  ✅ Schritt 5: Wörter erfolgreich gezählt.")
+    schritt += 1
+
+    # Alles geschafft!
+    print()
+    print(f"  🎉 Alle {schritt} Schritte erfolgreich abgeschlossen!")
+    print(f"     Ihre Wortliste enthält {len(v['uebung_woerter'])} Wörter.")
+    print(f"     Die 5 häufigsten: {v['uebung_haeufigkeiten'].most_common(5)}")
 
 
 # ============================================================
-# Kapitel 05: Text bereinigen, Schleifen, Bedingungen (TODO)
+# Kapitel 05: Text bereinigen, Schleifen, Bedingungen
 # ============================================================
+# Füge diesen Block in kurs_helpers.py unter dem Kapitel-05-Kommentar ein.
+#
+# WICHTIG: Die Funktion lade_bereinigten_text() gehört in den
+# allgemeinen Hilfsfunktionen-Bereich (z.B. nach _pruefe_variable),
+# da sie auch in späteren Kapiteln genutzt wird.
+# ============================================================
+
+
+# --- Diese Funktion in den allgemeinen Bereich einfügen ---
+
+def lade_bereinigten_text(dateiname):
+    """
+    Lädt ein Märchen aus dem maerchen_texte-Ordner,
+    bereinigt es (Kleinschreibung, Satzzeichen entfernen)
+    und gibt den bereinigten Text und die Wortliste zurück.
+
+    Wird in Kapitel 05+ genutzt, um den Textvorbereitungs-
+    Code aus Kapitel 04 nicht wiederholen zu müssen.
+
+    Parameter:
+        dateiname (str): Name der Textdatei, z.B. '153_Die_Sternthaler.txt'
+
+    Rückgabe:
+        tuple: (bereinigter_text, wort_liste)
+    """
+    import os
+
+    # Pfad relativ zum Notebook in Teil_1/ oder Teil_2/ etc.
+    pfad = os.path.join('..', 'maerchen_texte', dateiname)
+
+    with open(pfad, 'r', encoding='utf-8') as datei:
+        text = datei.read()
+
+    text_klein = text.lower()
+    bereinigt = text_klein.replace(".", "").replace(",", "").replace("'", "").replace("?", "")
+    wort_liste = bereinigt.split()
+
+    return bereinigt, wort_liste
+
+
+# --- Diese Funktion unter Kapitel 05 einfügen ---
+
+def pruefe_05_aufgabe_1():
+    """Prüft Aufgabe 1: Stoppwortliste mit append erstellt."""
+    v = _hole_variablen()
+
+    if "stopwords" not in v:
+        print("  ❌ Variable 'stopwords' nicht gefunden.")
+        print("     Haben Sie die Liste erstellt? Beginnen Sie mit: stopwords = []")
+        return
+
+    stopwords = v["stopwords"]
+
+    if not isinstance(stopwords, list):
+        print("  ❌ 'stopwords' sollte eine Liste sein. Nutzen Sie: stopwords = []")
+        return
+
+    if len(stopwords) == 0:
+        print("  ❌ Die Liste ist noch leer. Fügen Sie Wörter mit stopwords.append('wort') hinzu.")
+        return
+
+    # Prüfe ob alle Einträge Strings sind
+    nicht_strings = [w for w in stopwords if not isinstance(w, str)]
+    if nicht_strings:
+        print("  ❌ Alle Einträge sollten Zeichenketten sein (in Anführungszeichen).")
+        return
+
+    # Prüfe ob Wörter kleingeschrieben sind
+    gross = [w for w in stopwords if w != w.lower()]
+    if gross:
+        print(f"  ⚠️ Einige Wörter sind nicht kleingeschrieben: {gross}")
+        print("     Da unser Text kleingeschrieben ist, sollten auch die Stoppwörter klein sein.")
+
+    if len(stopwords) < 5:
+        print(f"  ⚠️ Sie haben {len(stopwords)} Stoppwörter. Versuchen Sie mindestens 5 hinzuzufügen.")
+        print("     Typische Stoppwörter: 'und', 'oder', 'der', 'die', 'das', 'in', 'ein', ...")
+    else:
+        print(f"  ✅ Gut gemacht! Ihre Stoppwortliste enthält {len(stopwords)} Wörter:")
+        print(f"     {stopwords}")
 
 
 # ============================================================
