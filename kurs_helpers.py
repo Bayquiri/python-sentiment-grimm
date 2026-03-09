@@ -457,8 +457,135 @@ def pruefe_05_aufgabe_1():
 
 
 # ============================================================
-# Kapitel 06: Abschlussprüfung Teil I (TODO)
+# Kapitel 06: Abschlussprüfung Teil I
 # ============================================================
+# Füge diesen Block in kurs_helpers.py unter dem Kapitel-06-Kommentar ein.
+#
+# ⚠️ HINWEIS:
+# Diese Prüffunktion ist als Selbstprüfung konzipiert.
+# Noch zu entscheiden:
+# - Soll die Selbstprüfung drin bleiben oder raus?
+# - Soll stattdessen/zusätzlich eine Abgabe (Download + Moodle) erfolgen?
+# - Falls Abgabe: Soll die Prüffunktion trotzdem als Hilfe bleiben,
+#   damit Studierende vor der Abgabe selbst prüfen können?
+# ============================================================
+
+def pruefe_06_abschlusspruefung():
+    """Prüft alle Schritte der Abschlussprüfung Teil I."""
+    from collections import Counter
+    v = _hole_variablen()
+    schritte_ok = 0
+    schritte_gesamt = 7
+
+    # --- Schritt 1: Text eingelesen? ---
+    if "frauholle" not in v:
+        print("  ❌ Schritt 1: Variable 'frauholle' nicht gefunden.")
+        print("     Lesen Sie die Datei mit open() ein.")
+        return
+    if not isinstance(v["frauholle"], str) or len(v["frauholle"]) < 100:
+        print("  ❌ Schritt 1: 'frauholle' scheint keinen vollständigen Text zu enthalten.")
+        return
+    print("  ✅ Schritt 1: Text erfolgreich eingelesen.")
+    schritte_ok += 1
+
+    # --- Schritt 2: Kleingeschrieben? ---
+    if "frauholle_klein" not in v:
+        print("  ❌ Schritt 2: Variable 'frauholle_klein' nicht gefunden.")
+        print("     Nutzen Sie .lower() und speichern Sie das Ergebnis in 'frauholle_klein'.")
+        return
+    if v["frauholle_klein"] != v["frauholle"].lower():
+        if v["frauholle_klein"] == v["frauholle"]:
+            print("  ❌ Schritt 2: Der Text ist noch nicht kleingeschrieben.")
+        else:
+            print("  ❌ Schritt 2: 'frauholle_klein' hat nicht den erwarteten Inhalt.")
+        return
+    print("  ✅ Schritt 2: Text erfolgreich kleingeschrieben.")
+    schritte_ok += 1
+
+    # --- Schritt 3: Satzzeichen entfernt? ---
+    if "bereinigter_text" not in v:
+        print("  ❌ Schritt 3: Variable 'bereinigter_text' nicht gefunden.")
+        print("     Nutzen Sie .replace() für jedes Satzzeichen.")
+        return
+    fehlende = []
+    for z in [".", ",", "?", "!", ":"]:
+        if z in v["bereinigter_text"]:
+            fehlende.append(z)
+    if fehlende:
+        print(f"  ❌ Schritt 3: Folgende Satzzeichen sind noch im Text: {fehlende}")
+        return
+    print("  ✅ Schritt 3: Satzzeichen erfolgreich entfernt.")
+    schritte_ok += 1
+
+    # --- Schritt 4: Wortliste erstellt? ---
+    if "wort_liste_frauholle" not in v:
+        print("  ❌ Schritt 4: Variable 'wort_liste_frauholle' nicht gefunden.")
+        print("     Nutzen Sie .split() und speichern Sie das Ergebnis in 'wort_liste_frauholle'.")
+        return
+    if not isinstance(v["wort_liste_frauholle"], list):
+        print("  ❌ Schritt 4: 'wort_liste_frauholle' sollte eine Liste sein.")
+        return
+    if len(v["wort_liste_frauholle"]) < 50:
+        print("  ❌ Schritt 4: Die Wortliste scheint zu kurz.")
+        return
+    print(f"  ✅ Schritt 4: Wortliste erstellt ({len(v['wort_liste_frauholle'])} Wörter).")
+    schritte_ok += 1
+
+    # --- Schritt 5: Häufigkeiten gezählt? ---
+    if "haeufigkeiten_frauholle" not in v:
+        print("  ❌ Schritt 5: Variable 'haeufigkeiten_frauholle' nicht gefunden.")
+        print("     Nutzen Sie Counter() aus der collections-Bibliothek.")
+        return
+    if not isinstance(v["haeufigkeiten_frauholle"], Counter):
+        print("  ❌ Schritt 5: 'haeufigkeiten_frauholle' sollte ein Counter-Objekt sein.")
+        return
+    print("  ✅ Schritt 5: Wörter erfolgreich gezählt.")
+    schritte_ok += 1
+
+    # --- Schritt 6: Zahlen und Stoppwörter entfernt? ---
+    # 6.1: Zahlen
+    zahlen_in_liste = [w for w in v["wort_liste_frauholle"] if w.isdigit()]
+    if zahlen_in_liste:
+        print(f"  ⚠️ Schritt 6.1: Es sind noch Zahlen in der Wortliste: {zahlen_in_liste}")
+    else:
+        print("  ✅ Schritt 6.1: Zahlen erfolgreich entfernt.")
+
+    # 6.2: Stoppwörter
+    if "listeOhneStoppwoerter" not in v:
+        print("  ❌ Schritt 6.2: Variable 'listeOhneStoppwoerter' nicht gefunden.")
+        print("     Filtern Sie die Stoppwörter mit einer for-Schleife heraus.")
+        return
+    if not isinstance(v["listeOhneStoppwoerter"], list):
+        print("  ❌ Schritt 6.2: 'listeOhneStoppwoerter' sollte eine Liste sein.")
+        return
+    if len(v["listeOhneStoppwoerter"]) >= len(v["wort_liste_frauholle"]):
+        print("  ❌ Schritt 6.2: Die Liste scheint nicht kürzer geworden zu sein.")
+        print("     Wurden die Stoppwörter wirklich herausgefiltert?")
+        return
+    print(f"  ✅ Schritt 6.2: Stoppwörter entfernt ({len(v['listeOhneStoppwoerter'])} Wörter übrig).")
+    schritte_ok += 1
+
+    # --- Schritt 7: Endergebnis? ---
+    if "haeufigkeitenOhneStoppwoerter" not in v:
+        print("  ❌ Schritt 7: Variable 'haeufigkeitenOhneStoppwoerter' nicht gefunden.")
+        print("     Nutzen Sie Counter() auf die gefilterte Liste.")
+        return
+    if not isinstance(v["haeufigkeitenOhneStoppwoerter"], Counter):
+        print("  ❌ Schritt 7: 'haeufigkeitenOhneStoppwoerter' sollte ein Counter-Objekt sein.")
+        return
+    print("  ✅ Schritt 7: Häufigkeiten ohne Stoppwörter berechnet.")
+    schritte_ok += 1
+
+    # --- Zusammenfassung ---
+    print()
+    if schritte_ok == schritte_gesamt:
+        print(f"  🎉 Alle {schritte_gesamt} Schritte erfolgreich abgeschlossen!")
+        print()
+        print("  Die 10 häufigsten Wörter in 'Frau Holle' (ohne Stoppwörter):")
+        for wort, anzahl in v["haeufigkeitenOhneStoppwoerter"].most_common(10):
+            print(f"     {wort}: {anzahl}")
+    else:
+        print(f"  {schritte_ok} von {schritte_gesamt} Schritten abgeschlossen. Weiter so!")
 
 
 # ============================================================
