@@ -822,20 +822,314 @@ def pruefe_06_abschlusspruefung():
 
 
 # ============================================================
-# Kapitel 07: Emotionale Wörter / Sentimentanalyse (TODO)
+# Kapitel 07: Emotionale Wörter / Sentimentanalyse
+# ============================================================
+# HINWEIS: Die Prüffunktion erwartet nun:
+# - score_frauholle (mit Negationserkennung berechnet)
+# - gefundene_frauholle (Liste der gefundenen Wörter)
 # ============================================================
 
-# Hier kommen später:
-# - STOPPWOERTER = [...]
-# - POSITIVE_WOERTER = [...]
-# - NEGATIVE_WOERTER = [...]
+def pruefe_07_aufgabe_1():
+    """Prüft Aufgabe 1: Sentiment Score für Frau Holle berechnen."""
+    v = _hole_variablen()
+
+    # Score vorhanden?
+    if "score_frauholle" not in v:
+        print("  ❌ Variable 'score_frauholle' nicht gefunden.")
+        print("     Berechnen Sie den Sentiment Score und speichern Sie ihn in 'score_frauholle'.")
+        return
+
+    if not isinstance(v["score_frauholle"], (int, float)):
+        print("  ❌ 'score_frauholle' sollte eine Zahl sein.")
+        return
+
+    # Gefundene Wörter vorhanden?
+    if "gefundene_frauholle" not in v:
+        print("  ❌ Variable 'gefundene_frauholle' nicht gefunden.")
+        print("     Speichern Sie die gefundenen emotionalen Wörter in 'gefundene_frauholle'.")
+        return
+
+    if not isinstance(v["gefundene_frauholle"], list):
+        print("  ❌ 'gefundene_frauholle' sollte eine Liste sein.")
+        return
+
+    if len(v["gefundene_frauholle"]) == 0:
+        print("  ❌ Es wurden keine emotionalen Wörter gefunden.")
+        print("     Wurde der Text bereinigt und das Sentiment-Lexikon genutzt?")
+        return
+
+    score = v["score_frauholle"]
+    woerter = v["gefundene_frauholle"]
+
+    print(f"  ✅ Sentiment Score für 'Frau Holle' berechnet: {score}")
+    print(f"     Gefundene emotionale Wörter: {len(woerter)}")
+    print()
+
+    # Aufschlüsselung
+    positive = [w for w in woerter if GRIMM_SENTIMENT_LEXIKON.get(w, 0) > 0]
+    negative = [w for w in woerter if GRIMM_SENTIMENT_LEXIKON.get(w, 0) < 0]
+    print(f"     Positive Wörter ({len(positive)}): {positive}")
+    print(f"     Negative Wörter ({len(negative)}): {negative}")
+    print()
+
+    if score > 0:
+        print("     📖 Frau Holle hat eine insgesamt positive Stimmung!")
+    elif score < 0:
+        print("     📖 Frau Holle hat eine insgesamt negative Stimmung!")
+    else:
+        print("     📖 Frau Holle ist stimmungsmäßig ausgewogen — genau neutral!")
 
 
 # ============================================================
-# Kapitel 08: Abschlussprüfung Teil II (TODO)
+# Kapitel 08: Sentimentanalyse vertiefen
 # ============================================================
 
 
+def pruefe_08_aufgabe_1():
+    """Prüft Aufgabe 1: Sentiment Score für ein frei gewähltes Märchen."""
+    v = _hole_variablen()
+
+    # Märchenname vorhanden?
+    if "maerchen_name" not in v:
+        print("  ❌ Variable 'maerchen_name' nicht gefunden.")
+        print("     Speichern Sie den Dateinamen in 'maerchen_name', z.B. 'Dornroeschen.txt'.")
+        return
+
+    name = v["maerchen_name"]
+    if not isinstance(name, str) or name == "..." or len(name) < 3:
+        print("  ❌ Bitte tragen Sie einen gültigen Dateinamen in 'maerchen_name' ein.")
+        print("     Beispiel: maerchen_name = 'Dornroeschen.txt'")
+        return
+
+    # Score vorhanden?
+    if "score_aufgabe" not in v:
+        print(f"  ❌ Variable 'score_aufgabe' nicht gefunden.")
+        print("     Berechnen Sie den Sentiment Score und speichern Sie ihn in 'score_aufgabe'.")
+        return
+
+    if not isinstance(v["score_aufgabe"], (int, float)):
+        print("  ❌ 'score_aufgabe' sollte eine Zahl sein.")
+        return
+
+    # Details vorhanden?
+    if "details_aufgabe" not in v:
+        print("  ❌ Variable 'details_aufgabe' nicht gefunden.")
+        print("     Nutzen Sie berechne_sentiment_mit_negation() und speichern Sie")
+        print("     das zweite Ergebnis in 'details_aufgabe'.")
+        return
+
+    if not isinstance(v["details_aufgabe"], list):
+        print("  ❌ 'details_aufgabe' sollte eine Liste sein.")
+        return
+
+    if len(v["details_aufgabe"]) == 0:
+        print("  ❌ Es wurden keine emotionalen Wörter gefunden.")
+        print("     Wurde der Text bereinigt und das Lexikon genutzt?")
+        return
+
+    score = v["score_aufgabe"]
+    details = v["details_aufgabe"]
+
+    # Aufschlüsselung
+    positive = [(w, end) for w, orig, neg, end in details if end > 0]
+    negative = [(w, end) for w, orig, neg, end in details if end < 0]
+    negierte = [(w, orig, end) for w, orig, neg, end in details if neg]
+
+    print(f"  ✅ Sentiment Score für '{name}' berechnet: {score}")
+    print(f"     Gefundene emotionale Wörter: {len(details)}")
+    print(f"     Davon positiv: {len(positive)}, negativ: {len(negative)}")
+    print()
+
+    if negierte:
+        print(f"     Negation hat {len(negierte)} Wörter umgedreht:")
+        for wort, orig, end in negierte:
+            print(f"       '{wort}': {orig:+d} → {end:+d}")
+        print()
+
+    if score > 0:
+        print(f"     📖 '{name}' hat eine insgesamt positive Stimmung!")
+    elif score < 0:
+        print(f"     📖 '{name}' hat eine insgesamt negative Stimmung!")
+    else:
+        print(f"     📖 '{name}' ist stimmungsmäßig ausgewogen — genau neutral!")
+
+
 # ============================================================
-# Kapitel 09: Visualisierung (TODO)
+# Kapitel 09: Visualisierung (AKTUALISIERT)
 # ============================================================
+
+
+def pruefe_09_aufgabe_1():
+    """Prüft Aufgabe 1: Stimmungsverlauf für ein frei gewähltes Märchen."""
+    v = _hole_variablen()
+
+    if "maerchen_name_aufgabe" not in v:
+        print("  ❌ Variable 'maerchen_name_aufgabe' nicht gefunden.")
+        print("     Speichern Sie den Dateinamen, z.B. maerchen_name_aufgabe = 'Dornroeschen.txt'")
+        return
+
+    name = v["maerchen_name_aufgabe"]
+    if not isinstance(name, str) or name == "..." or len(name) < 3:
+        print("  ❌ Bitte tragen Sie einen gültigen Dateinamen in 'maerchen_name_aufgabe' ein.")
+        return
+
+    if "verlauf_aufgabe" not in v:
+        print("  ❌ Variable 'verlauf_aufgabe' nicht gefunden.")
+        print("     Berechnen Sie den Stimmungsverlauf und speichern Sie ihn in 'verlauf_aufgabe'.")
+        return
+
+    verlauf = v["verlauf_aufgabe"]
+
+    if not isinstance(verlauf, list):
+        print("  ❌ 'verlauf_aufgabe' sollte eine Liste sein.")
+        return
+
+    if len(verlauf) == 0:
+        print("  ❌ Die Verlaufsliste ist leer.")
+        print("     Wurde der Text in Abschnitte eingeteilt und der Score berechnet?")
+        return
+
+    if not all(isinstance(x, (int, float)) for x in verlauf):
+        print("  ❌ Die Verlaufsliste sollte nur Zahlen enthalten.")
+        return
+
+    positive_abschnitte = sum(1 for x in verlauf if x > 0)
+    negative_abschnitte = sum(1 for x in verlauf if x < 0)
+    gesamt_score = sum(verlauf)
+
+    print(f"  ✅ Stimmungsverlauf für '{name}' berechnet!")
+    print(f"     Anzahl Abschnitte: {len(verlauf)}")
+    print(f"     Positive Abschnitte: {positive_abschnitte}")
+    print(f"     Negative Abschnitte: {negative_abschnitte}")
+    print(f"     Gesamt-Score: {gesamt_score}")
+    print()
+    print("     ℹ️ Haben Sie auch eine Grafik erstellt? Vergleichen Sie den Verlauf")
+    print("        mit Ihrem eigenen Eindruck des Märchens!")
+
+
+def pruefe_09_aufgabe_2():
+    """Prüft Aufgabe 2: Balkendiagramm für drei Märchen."""
+    v = _hole_variablen()
+
+    if "namen_aufgabe" not in v:
+        print("  ❌ Variable 'namen_aufgabe' nicht gefunden.")
+        print("     Speichern Sie die Märchennamen in einer Liste 'namen_aufgabe'.")
+        return
+
+    if "scores_aufgabe" not in v:
+        print("  ❌ Variable 'scores_aufgabe' nicht gefunden.")
+        print("     Speichern Sie die Scores in einer Liste 'scores_aufgabe'.")
+        return
+
+    namen = v["namen_aufgabe"]
+    scores = v["scores_aufgabe"]
+
+    if not isinstance(namen, list) or not isinstance(scores, list):
+        print("  ❌ 'namen_aufgabe' und 'scores_aufgabe' sollten beide Listen sein.")
+        return
+
+    if len(namen) == 0 or len(scores) == 0:
+        print("  ❌ Die Listen sind leer. Haben Sie Märchen ausgewählt und Scores berechnet?")
+        return
+
+    if len(namen) != len(scores):
+        print(f"  ❌ Die Listen haben unterschiedliche Längen: {len(namen)} Namen, {len(scores)} Scores.")
+        return
+
+    if not all(isinstance(s, (int, float)) for s in scores):
+        print("  ❌ 'scores_aufgabe' sollte nur Zahlen enthalten.")
+        return
+
+    print(f"  ✅ Balkendiagramm-Daten für {len(namen)} Märchen vorhanden!")
+    print()
+    for name, score in zip(namen, scores):
+        balken = "🟢" if score > 0 else "🔴" if score < 0 else "⚪"
+        print(f"     {balken} {name}: {score}")
+    print()
+    print("     ℹ️ Haben Sie auch ein Balkendiagramm erstellt?")
+
+
+# ============================================================
+# Kapitel 10: Abschlussprüfung Teil II
+# ============================================================
+# ⚠️ HINWEIS:
+# Diese Prüffunktion ist als Selbstprüfung konzipiert.
+# Gleiche Frage wie bei Kapitel 06: Selbstprüfung, Abgabe, oder beides?
+# ============================================================
+
+def pruefe_10_abschlusspruefung():
+    """Prüft die Abschlussprüfung Teil II."""
+    v = _hole_variablen()
+    schritte_ok = 0
+
+    # --- Aufgabe 1: Alle Scores berechnet? ---
+    if "alle_namen" not in v or "alle_scores" not in v:
+        print("  ❌ Aufgabe 1: 'alle_namen' und/oder 'alle_scores' nicht gefunden.")
+        print("     Berechnen Sie die Scores und speichern Sie sie in diesen Listen.")
+        return
+
+    namen = v["alle_namen"]
+    scores = v["alle_scores"]
+
+    if not isinstance(namen, list) or not isinstance(scores, list):
+        print("  ❌ Aufgabe 1: 'alle_namen' und 'alle_scores' sollten Listen sein.")
+        return
+
+    if len(namen) != len(scores):
+        print(f"  ❌ Aufgabe 1: Unterschiedliche Anzahl: {len(namen)} Namen, {len(scores)} Scores.")
+        return
+
+    if len(namen) < 10:
+        print(f"  ⚠️ Aufgabe 1: Es sollten 10 Märchen sein, Sie haben aber nur {len(namen)}.")
+    else:
+        print(f"  ✅ Aufgabe 1: Sentiment Scores für {len(namen)} Märchen berechnet.")
+    schritte_ok += 1
+
+    if not all(isinstance(s, (int, float)) for s in scores):
+        print("  ❌ Aufgabe 1: 'alle_scores' enthält Werte, die keine Zahlen sind.")
+        return
+
+    # Ergebnisse anzeigen
+    print()
+    sortiert = sorted(zip(namen, scores), key=lambda x: x[1], reverse=True)
+    print("     Ranking (positivstes → negativstes Märchen):")
+    for i, (name, score) in enumerate(sortiert, 1):
+        balken = "🟢" if score > 0 else "🔴" if score < 0 else "⚪"
+        print(f"     {i:2}. {balken} {name}: {score}")
+    print()
+
+    # --- Aufgabe 3: Spannungskurve ---
+    if "verlauf_pruefung" not in v:
+        print("  ❌ Aufgabe 3: Variable 'verlauf_pruefung' nicht gefunden.")
+        print("     Erstellen Sie eine Spannungskurve für das negativste Märchen.")
+        return
+
+    verlauf = v["verlauf_pruefung"]
+
+    if not isinstance(verlauf, list) or len(verlauf) == 0:
+        print("  ❌ Aufgabe 3: 'verlauf_pruefung' sollte eine nicht-leere Liste sein.")
+        return
+
+    if "maerchen_pruefung" not in v:
+        print("  ❌ Aufgabe 3: Variable 'maerchen_pruefung' nicht gefunden.")
+        return
+
+    maerchen = v["maerchen_pruefung"]
+    if not isinstance(maerchen, str) or maerchen == "...":
+        print("  ❌ Aufgabe 3: Bitte tragen Sie den Namen des Märchens in 'maerchen_pruefung' ein.")
+        return
+
+    print(f"  ✅ Aufgabe 3: Spannungskurve für '{maerchen}' berechnet ({len(verlauf)} Abschnitte).")
+    schritte_ok += 1
+
+    # --- Zusammenfassung ---
+    print()
+    print("  " + "=" * 50)
+
+    negativstes = sortiert[-1]
+    positivstes = sortiert[0]
+    print(f"  📊 Positivstes Märchen: {positivstes[0]} (Score: {positivstes[1]})")
+    print(f"  📊 Negativstes Märchen: {negativstes[0]} (Score: {negativstes[1]})")
+    print()
+    print("  🎉 Abschlussprüfung Teil II abgeschlossen!")
+    print("     Vergessen Sie nicht, Aufgabe 4 (Reflexion) zu beantworten.")
