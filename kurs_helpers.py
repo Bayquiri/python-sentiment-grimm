@@ -830,10 +830,9 @@ def pruefe_06_abschlusspruefung():
 # ============================================================
 
 def pruefe_07_aufgabe_1():
-    """Prüft Aufgabe 1: Sentiment Score für Frau Holle berechnen."""
+    """Prüft Aufgabe 1: Sentiment Score für Frau Holle."""
     v = _hole_variablen()
 
-    # Score vorhanden?
     if "score_frauholle" not in v:
         print("  ❌ Variable 'score_frauholle' nicht gefunden.")
         print("     Berechnen Sie den Sentiment Score und speichern Sie ihn in 'score_frauholle'.")
@@ -843,41 +842,17 @@ def pruefe_07_aufgabe_1():
         print("  ❌ 'score_frauholle' sollte eine Zahl sein.")
         return
 
-    # Gefundene Wörter vorhanden?
-    if "gefundene_frauholle" not in v:
-        print("  ❌ Variable 'gefundene_frauholle' nicht gefunden.")
-        print("     Speichern Sie die gefundenen emotionalen Wörter in 'gefundene_frauholle'.")
-        return
-
-    if not isinstance(v["gefundene_frauholle"], list):
-        print("  ❌ 'gefundene_frauholle' sollte eine Liste sein.")
-        return
-
-    if len(v["gefundene_frauholle"]) == 0:
-        print("  ❌ Es wurden keine emotionalen Wörter gefunden.")
-        print("     Wurde der Text bereinigt und das Sentiment-Lexikon genutzt?")
-        return
-
     score = v["score_frauholle"]
-    woerter = v["gefundene_frauholle"]
 
-    print(f"  ✅ Sentiment Score für 'Frau Holle' berechnet: {score}")
-    print(f"     Gefundene emotionale Wörter: {len(woerter)}")
-    print()
+    if score == 0:
+        print("  ❌ Der Score ist 0. Wurde das Lexikon genutzt?")
+        return
 
-    # Aufschlüsselung
-    positive = [w for w in woerter if GRIMM_SENTIMENT_LEXIKON.get(w, 0) > 0]
-    negative = [w for w in woerter if GRIMM_SENTIMENT_LEXIKON.get(w, 0) < 0]
-    print(f"     Positive Wörter ({len(positive)}): {positive}")
-    print(f"     Negative Wörter ({len(negative)}): {negative}")
-    print()
-
+    print("  ✅ Sentiment Score für 'Frau Holle' berechnet:", score)
     if score > 0:
         print("     📖 Frau Holle hat eine insgesamt positive Stimmung!")
     elif score < 0:
         print("     📖 Frau Holle hat eine insgesamt negative Stimmung!")
-    else:
-        print("     📖 Frau Holle ist stimmungsmäßig ausgewogen — genau neutral!")
 
 
 # ============================================================
