@@ -371,7 +371,7 @@ def erklaere_01_aufgabe_4():
     print("     position = initial     # position bekommt den aktuellen Wert von initial: 'left'")
     print("     initial = 'right'      # initial wird geändert, aber position bleibt 'left'")
     print()
-    print("     Python merkt sich den Wert, nicht die Verbindung zur anderen Variable.")
+    print("     Python merkt sich den Wert, nicht die Verbindung zur anderen Variablen.")
 
 
 # ============================================================
@@ -502,7 +502,7 @@ def erklaere_03_aufgabe_4():
     print("     weil das der letzte Eintrag in der Liste ist.")
     print()
     print("     del resources[-1] würde das letzte Element entfernen.")
-    print("     Die Liste wäre danach: ['Märchen', 'Sagen', 'wissenschaftliche Arbeiten']")
+    print("     Als Liste würde danach ausgegeben werden: ['Märchen', 'Sagen', 'wissenschaftliche Arbeiten']")
 
 # ============================================================
 # Kapitel 04: Texte einlesen und bereinigen
@@ -680,6 +680,14 @@ def pruefe_05_aufgabe_1():
     if gross:
         print(f"  ⚠️ Einige Wörter sind nicht kleingeschrieben: {gross}")
         print("     Da unser Text kleingeschrieben ist, sollten auch die Stoppwörter klein sein.")
+
+    if len(stopwords) < 1:
+        print(f"  ⚠️ Sie haben kein Stoppwort hinzugefügt. Versuchen Sie mindestens 5 hinzuzufügen.")
+        print("     Typische Stoppwörter: 'und', 'oder', 'der', 'die', 'das', 'in', 'ein', ...")
+
+    if len(stopwords) < 2:
+        print(f"  ⚠️ Sie haben bisher nur 1 Stoppwort. Versuchen Sie mindestens 5 hinzuzufügen.")
+        print("     Typische Stoppwörter: 'und', 'oder', 'der', 'die', 'das', 'in', 'ein', ...")
 
     if len(stopwords) < 5:
         print(f"  ⚠️ Sie haben {len(stopwords)} Stoppwörter. Versuchen Sie mindestens 5 hinzuzufügen.")
