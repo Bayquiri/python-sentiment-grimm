@@ -11,3 +11,7 @@ Den Zugangslink erhalten Sie über Moodle.
 ## Lizenz
 
 CC BY 4.0 — Sarah Ann Stock, Universitätsbibliothek Duisburg-Essen
+
+## Zitation
+
+Der Selbstlernkurs "Sentimentanalyse von Grimms Märchen" von Sarah Ann Stock steht unter der Lizenz Namensnennung-Share Alike 4.0 International (CC BY-SA 4.0)
