@@ -93,4 +93,16 @@ Weitere Informationen zum Projekt, den Materialien und Ansprechpersonen finden S
 
 ---
 
-![DH Ruhr UDE](logos/Logo_DigitalHumanities_UDE.png) &nbsp;&nbsp; ![Stiftung Innovation in der Hochschullehre](logos/Logo_Stiftung_Hochschullehre_pos-Gefördert-durch.pngjpg) &nbsp;&nbsp; ![UB UDE](logos/Logo_UB.png) &nbsp;&nbsp; ![ZHQE](logos/ZHQE-Logo_farbig_RGB.png) &nbsp;&nbsp; ![Fakultät für Geisteswissenschaften](logos/logo_geiwi.png) &nbsp;&nbsp; ![Jupyter4NFDI](logos/Jupyter4NFDI.png)
+<p>
+<img src="logos/Logo_DigitalHumanities_UDE.png" height="60" alt="DH Ruhr UDE">
+&nbsp;&nbsp;
+<img src="logos/Logo_Stiftung_Hochschullehre_pos-Gefördert-durch.jpg" height="60" alt="Stiftung Innovation in der Hochschullehre">
+&nbsp;&nbsp;
+<img src="logos/Logo_UB.png" height="60" alt="UB UDE">
+&nbsp;&nbsp;
+<img src="logos/ZHQE-Logo_farbig_RGB.png" height="60" alt="ZHQE">
+&nbsp;&nbsp;
+<img src="logos/logo_geiwi.png" height="60" alt="Fakultät für Geisteswissenschaften">
+&nbsp;&nbsp;
+<img src="logos/Jupyter4NFDI.png" height="60" alt="Jupyter4NFDI">
+</p>
