@@ -700,16 +700,7 @@ def pruefe_05_aufgabe_1():
 # ============================================================
 # Kapitel 06: Abschlussprüfung Teil I
 # ============================================================
-# Füge diesen Block in kurs_helpers.py unter dem Kapitel-06-Kommentar ein.
-#
-# ⚠️ HINWEIS:
-# Diese Prüffunktion ist als Selbstprüfung konzipiert.
-# Noch zu entscheiden:
-# - Soll die Selbstprüfung drin bleiben oder raus?
-# - Soll stattdessen/zusätzlich eine Abgabe (Download + Moodle) erfolgen?
-# - Falls Abgabe: Soll die Prüffunktion trotzdem als Hilfe bleiben,
-#   damit Studierende vor der Abgabe selbst prüfen können?
-# ============================================================
+
 
 def pruefe_06_abschlusspruefung():
     """Prüft alle Schritte der Abschlussprüfung Teil I."""
@@ -832,10 +823,7 @@ def pruefe_06_abschlusspruefung():
 # ============================================================
 # Kapitel 07: Emotionale Wörter / Sentimentanalyse
 # ============================================================
-# HINWEIS: Die Prüffunktion erwartet nun:
-# - score_frauholle (mit Negationserkennung berechnet)
-# - gefundene_frauholle (Liste der gefundenen Wörter)
-# ============================================================
+
 
 def pruefe_07_aufgabe_1():
     """Prüft Aufgabe 1: Sentiment Score für Frau Holle."""
