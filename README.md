@@ -2,7 +2,7 @@
 
 Ein interaktiver Selbstlernkurs, der Studierenden der Geistes- und Sozialwissenschaften die Grundlagen von Python beibringt — am Beispiel einer Sentimentanalyse von Grimms Märchen.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Bayquiri/python-sentiment-grimm/main)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Bayquiri/python-sentiment-grimm/main?labpath=00_Willkommen.ipynb)
 
 ---
 
