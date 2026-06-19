@@ -34,9 +34,17 @@ Klicken Sie auf den Binder-Badge oben oder hier:
 
 Die Umgebung wird automatisch aufgebaut. Das kann beim ersten Mal einige Minuten dauern.
 
-### Über den JupyterHub (mit institutioneller Anmeldung)
+### Über den JupyterHub (mit institutioneller Anmeldung, empfohlen)
 
-Der Kurs wird über den [NFDI JupyterHub](https://hub.nfdi-jupyter.de) bereitgestellt. Die Anmeldung erfolgt über daphne4NFDI — Angehörige von Hochschulen und Forschungseinrichtungen können sich mit ihrer institutionellen Kennung einloggen.
+Für die vollständige Kurserfahrung empfehlen wir die Nutzung über den NFDI JupyterHub. Im Gegensatz zu Binder bietet der Hub:
+
+- **Fortschritt speichern** — Ihre Änderungen bleiben erhalten, auch wenn Sie die Sitzung beenden
+- **Eigener Arbeitsbereich** — Jede/r Studierende bekommt eine persönliche Umgebung
+- **Stabile Infrastruktur** — Gehostet auf der deNBI-Cloud, zuverlässig und performant
+
+Die Anmeldung erfolgt über daphne4NFDI — Angehörige von Hochschulen und Forschungseinrichtungen können sich mit ihrer institutionellen Kennung einloggen.
+
+[→ Kurs auf dem JupyterHub starten](https://hub.nfdi-jupyter.de/v2/git/https%3A%2F%2Fgit.uni-due.de%2Fadf929h%2Fsentimentanalyse_notebooks.git/main?labpath=00_Willkommen.ipynb&system=deNBI-Cloud&flavor=m1&localstoragepath=%2Fhome%2Fjovyan%2Fwork)
 
 ### Lokal auf dem eigenen Rechner
 
