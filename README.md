@@ -87,9 +87,9 @@ Sarah Ann Stock (2026): Sentimentanalyse von Grimms Märchen mit Python. Erstell
 
 Dieses Werk und dessen Inhalte sind – sofern nicht anders angegeben – lizenziert unter [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Ausgenommen aus der Lizenz CC BY-SA 4.0 sind alle Logos.
 
-Die Märchentexte stammen aus dem [Deutschen Textarchiv](https://www.deutschestextarchiv.de/) (Lizenz: CC BY-SA).
+Die Märchentexte stammen aus dem [Deutschen Textarchiv](https://www.deutschestextarchiv.de/) (Lizenz: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)).
 
-Die technische Umsetzung auf dem JupyterHub wurde im Rahmen des NFDI JupyterHub Incubator Projects auf der deNBI-Cloud realisiert.
+Die technische Umsetzung auf dem JupyterHub wurde im Rahmen des NFDI JupyterHub Incubator Projects auf der [deNBI-Cloud](https://hub.nfdi-jupyter.de/hub/home) realisiert.
 
 ---
 
