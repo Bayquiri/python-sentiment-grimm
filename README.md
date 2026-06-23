@@ -79,7 +79,7 @@ Anschließend können Sie die Notebooks in JupyterLab oder VS Code öffnen.
 
 ## Zitation
 
-Sarah Ann Stock (2026): Sentimentanalyse von Grimms Märchen mit Python. Erstellt im Rahmen des Projekts Digital Humanities Ruhr@UDE. Selbstlernkurs (Version 1.0). DOI: [wird ergänzt]
+Sarah Ann Stock (2026): Sentimentanalyse von Grimms Märchen mit Python. Selbstlernkurs (Version 1.0). DOI: [https://doi.org/10.17185/duepublico/86519](https://doi.org/10.17185/duepublico/86519)
 
 ---
 
@@ -90,6 +90,7 @@ Dieses Werk und dessen Inhalte sind – sofern nicht anders angegeben – lizenz
 Die Märchentexte stammen aus dem [Deutschen Textarchiv](https://www.deutschestextarchiv.de/) (Lizenz: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)).
 
 Die technische Umsetzung auf dem JupyterHub wurde im Rahmen des NFDI JupyterHub Incubator Projects auf der [deNBI-Cloud](https://hub.nfdi-jupyter.de/hub/home) realisiert.
+This work is supported by Jupyter4NFDI as part of Base4NFDI (DFG project no.521453681).
 
 ---
 
