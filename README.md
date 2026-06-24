@@ -28,11 +28,7 @@ Geschätzte Bearbeitungszeit: ca. 4–6 Stunden.
 
 ### Zum Ausprobieren (ohne Anmeldung)
 
-Klicken Sie auf den Binder-Badge oben oder hier:
-
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/Bayquiri/python-sentiment-grimm/main)
-
-Die Umgebung wird automatisch aufgebaut. Das kann beim ersten Mal einige Minuten dauern.
+Klicken Sie auf den Binder-Badge oben — die Umgebung wird automatisch aufgebaut. Das kann beim ersten Mal einige Minuten dauern.
 
 ### Über den JupyterHub (mit institutioneller Anmeldung, empfohlen)
 
