@@ -103,7 +103,7 @@ Weitere Informationen zum Projekt, den Materialien und Ansprechpersonen finden S
 &nbsp;&nbsp;
 <img src="logos/Logo_Stiftung_Hochschullehre_pos-Gefördert-durch.jpg" height="60" alt="Stiftung Innovation in der Hochschullehre">
 &nbsp;&nbsp;
-<img src="logos/Logo_UB.png" height="60" alt="UB UDE">
+<img src="logos/Logo_UB.PNG" height="60" alt="UB UDE">
 &nbsp;&nbsp;
 <img src="logos/ZHQE-Logo_farbig_RGB.png" height="60" alt="ZHQE">
 &nbsp;&nbsp;
